@@ -1,6 +1,6 @@
-# Goodreads Clone
+# Book App
 
-A scalable Goodreads-like web application for book discovery, rating, reviewing, tracking reading status, social connections, book clubs, and personalized recommendations.
+A scalable web application for book discovery, rating, reviewing, tracking reading status, social connections, book clubs, and personalized recommendations.
 
 ## Features
 - User registration and login (JWT authentication)
