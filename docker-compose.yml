@@ -1,0 +1,45 @@
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: bookapp-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: book-app
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build:
+      context: ./backend
+    container_name: bookapp-backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env.docker
+    environment:
+      # Force the backend to use the Docker mongo container
+      MONGODB_URI: mongodb://mongo:27017/book-app
+      NODE_ENV: development
+      CLIENT_URL: http://localhost:3000
+    depends_on:
+      - mongo
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: bookapp-frontend
+    restart: unless-stopped
+    environment:
+      # If frontend uses an API URL env we should set it here
+      NEXT_PUBLIC_API_URL: http://localhost:5000
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+volumes:
+  mongo_data:
