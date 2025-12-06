@@ -20,7 +20,9 @@ import { sendPasswordResetEmail, sendResetSuccessEmail, sendVerificationEmail, s
 const app = express();
 app.use(cors({
   origin: 'http://localhost:3000',
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed HTTP methods        
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
 }));
 app.use(express.json());
 

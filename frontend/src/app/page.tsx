@@ -27,7 +27,7 @@ export default function Home() {
         backdropFilter: 'blur(10px)'
       }}>
         <h1 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 'bold' }}>
-          📚 Goodreads Clone
+          📚 Book App
         </h1>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Link href="/books" style={{
