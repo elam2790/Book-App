@@ -5,9 +5,12 @@ import React, { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { useRouter } from 'next/navigation';
 
-export default function ResetPasswordPage({ params }: { params: { id: string } }) {
-	const paramsObj = React.use(params as any) as { id: string };
-	const { token } = paramsObj;
+type ResetPasswordParams = {
+	token: string;
+}
+
+export default function ResetPasswordPage({ params }: any) {
+	const { token } = params as ResetPasswordParams;
 	const router = useRouter();
 
 	const [password, setPassword] = useState("");
