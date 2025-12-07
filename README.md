@@ -19,6 +19,69 @@ A scalable Goodreads-like web application for book discovery, rating, reviewing,
 - **Backend:** Node.js, Express, MongoDB, Mongoose, JWT
 - **Frontend:** React, Next.js (App Router), TypeScript
 ---
+# Docker Setup (Recommended)
+This project includes a full Docker environment using Docker Compose. It runs:
+- MongoDB (database)
+- Backend API (Node.js + Express)
+- Frondtend (Next.js)
+
+## Prerequisites
+- Install Docker Desktop
+   https://www.docker.com/products/docker-desktop/
+
+   Make sure Docker is running before continuing.
+
+## Start the app with Docker
+Make sure you're in the root folder `\Book-App`
+   ```sh
+   docker compose up --build
+   ```
+
+This will:
+   - start MongoDB 
+
+      exposed locally on: localhost:27017
+   - build and start the backend
+      
+      which runs at: http://localhost:5000
+
+      the environment variables come from `backend/.env.docker`.
+   - build and start the frontend
+
+      which runs at: http://localhost:3000
+
+      the frontend communicates with the backend via `NEXT_PUBLIC_API_URL=http://localhost:5000`.
+
+## When finished, make sure to stop Docker
+   ```sh
+   docker compose down
+   ```
+
+   To remove containers, networks, and volumes:
+   ```sh
+   docker compose down --volumes
+   ```
+
+## Docker Troubleshooting
+If you see: `sh: next: not found`
+
+- This means the final frontend Docker image is missing `node_modules`.
+
+   Make sure the `frontend/Dockerfile` copies them correctly:
+   ```sh
+   COPY --from=builder /app/node_modules ./node_modules
+   ```
+
+If you get any build cache/snapshot errors:
+
+- Reset the Docker BuildKit cache:
+   ```sh
+   docker buldx prune
+   ```
+   Then restart Docker Desktop.
+
+# Local Development (Without Docker)
+The backend and frontend can be run separately without Docker.
 
 ## Backend Setup
 
