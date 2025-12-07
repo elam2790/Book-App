@@ -39,6 +39,7 @@ export default function Books() {
 
 
   useEffect(() => {
+
     console.log('Dropdown state changed:', showStatusDropdown);
   }, [showStatusDropdown]);
 
@@ -363,6 +364,7 @@ export default function Books() {
                       color: 'white',
                       fontSize: '3rem'
                     }}>
+                      <img src={book.coverUrl} width='120' height='120'/>
                       {book.coverUrl ? '' : '📖'}
                     </div>
 
