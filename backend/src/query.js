@@ -24,6 +24,7 @@ export const queryBooks = async () => {
     });
     const response = await axios.post(`${baseURL}/api/books`, book)
     var resq = response.status;
+    console.log(resq)
   }
   } catch (error) {
     console.log(error);
