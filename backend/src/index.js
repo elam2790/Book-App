@@ -494,7 +494,7 @@ app.delete('/api/users/:id/follow', authenticateToken, async (req, res) => {
 // Book routes
 app.get('/api/books', async (req, res) => {
   try {
-    queryBooks();
+    //queryBooks();
     let { page = 1, limit = 20 } = req.query;
     page = parseInt(page);
     limit = parseInt(limit);
