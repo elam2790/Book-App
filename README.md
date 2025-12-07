@@ -57,7 +57,7 @@ This will:
    docker compose down
    ```
 
-   To remove containers, networks, and volumes:
+   To make sure data is wiped from the Docker mongodb, use:
    ```sh
    docker compose down --volumes
    ```

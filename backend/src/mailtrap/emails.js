@@ -1,4 +1,4 @@
-import { PASSWORD_RESET_REQUEST_TEMPLATE, PASSWORD_RESET_SUCCESS_TEMPLATE, VERIFICATION_EMAIL_TEMPLATE } from "./emailTemplates.js";
+import { PASSWORD_RESET_REQUEST_TEMPLATE, PASSWORD_RESET_SUCCESS_TEMPLATE, VERIFICATION_EMAIL_TEMPLATE, WELCOME_EMAIL_TEMPLATE } from "./emailTemplates.js";
 
 import { client, sender } from "./mailtrap.config.js";
 
@@ -26,12 +26,11 @@ export const sendWelcomeEmail = async (email, name) => {
             .send({
                 from: sender,
                 to: recipient,
-                template_uuid: "c271e008-e19b-420e-aa26-78352192c75f",
-                template_variables: {
-                    "name": name
-                }
+                subject: "Welcome to Book App",
+                html: WELCOME_EMAIL_TEMPLATE.replace("{name}", name),
+                category: "Welcome",
             })
-        console.log("Wecome email sent successfully", response);
+        console.log("Welcome email sent successfully", response);
     } catch (error) {
         console.error("Error sending welcome email", error);
         throw new Error(`Error sending welcome email: ${error}`);
