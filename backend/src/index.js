@@ -26,6 +26,21 @@ app.use(cors({
 }));
 app.use(express.json());
 
+app.use((req, res, next) => {
+  // Allow requests from http://localhost:3000
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); 
+  // Allow specific HTTP methods
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  // Allow specific headers
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 // Connect to MongoDB
 connectDB();
 queryBooks();
