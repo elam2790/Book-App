@@ -43,7 +43,7 @@ app.use((req, res, next) => {
 
 // Connect to MongoDB
 connectDB();
-queryBooks();
+//queryBooks();
 // JWT Secret
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 

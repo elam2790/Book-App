@@ -79,7 +79,7 @@ export default function Books() {
       setTotalPages(response.data.pages);
       setTotalBooks(response.data.total);
     } catch (error) {
-      setError('Failed to load books. Please try again.');
+      setError('Failed to load books. Please try again.' + error);
       console.error('Error fetching books:', error);
     } finally {
       setLoading(false);
