@@ -19,7 +19,7 @@ import { sendPasswordResetEmail, sendResetSuccessEmail, sendVerificationEmail, s
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3000/*',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed HTTP methods        
   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
@@ -43,7 +43,7 @@ app.use((req, res, next) => {
 
 // Connect to MongoDB
 connectDB();
-//queryBooks();
+queryBooks();
 // JWT Secret
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 

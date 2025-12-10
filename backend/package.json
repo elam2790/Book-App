@@ -25,7 +25,8 @@
     "googleapis": "^167.0.0",
     "jsonwebtoken": "^9.0.2",
     "mailtrap": "^4.2.0",
-    "mongoose": "^8.3.4"
+    "mongoose": "^8.3.4",
+    "random-words": "^2.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
