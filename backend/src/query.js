@@ -11,7 +11,7 @@ export const queryBooks = async () => {
     let q = generate();
     console.log(q);
     const res = await axios.get(
-      'https://www.googleapis.com/books/v1/volumes?q=' + q + '&key=' + API_KEY)
+      'https://www.googleapis.com/books/v1/volumes?q=' + q + '&key=' + API_KEY + '&maxResults=40')
     // Result of resp
     var result = res.data.items
     for (let i = 0; i < result.length - 1; i++) {
