@@ -41,5 +41,21 @@ services:
     ports:
       - "3000:3000"
 
+  seed:
+    build:
+      # Tells it to reuse the backend image & code
+      context: ./backend
+    container_name: bookapp-seed
+    env_file:
+      # Use same env as backend
+      - ./backend/.env.docker
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/book-app
+    depends_on:
+      - mongo
+    command: ["npm", "run", "seed:books"]
+    # Has it run once and then exit.
+    restart: "no"
+
 volumes:
   mongo_data:
